@@ -32,8 +32,6 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error
 
-
-
 def comparative(df):
     Y = df[['class']]
     X = df.iloc[:,df.columns !='class']
@@ -71,7 +69,6 @@ def comparative(df):
         print("Accuracy Cay Quyet Dinh:",metrics.accuracy_score(Y_Test, y_pred))
         acc_DT.append(metrics.accuracy_score(Y_Test, y_pred))
         
-
 # naive classifier
         start = datetime.now()
         model_navie = GaussianNB()
@@ -84,7 +81,6 @@ def comparative(df):
         print("Accuracy Naive Bayes: ", metrics.accuracy_score(Y_Test, y_pred))
         acc_Navie.append(metrics.accuracy_score(Y_Test, y_pred))
 
-
 # SVM
         start = datetime.now()
         svclassifier = SVC(kernel='rbf')
@@ -96,7 +92,6 @@ def comparative(df):
         print("Accuracy SVM:",metrics.accuracy_score(Y_Test, y_pred))
         acc_SVM.append(metrics.accuracy_score(Y_Test, y_pred))
     
-
 # KNN
         start = datetime.now()
         model_KNN = KNeighborsClassifier()
@@ -107,8 +102,7 @@ def comparative(df):
 
         print("Accuracy KNN:",metrics.accuracy_score(Y_Test, y_pred))
         acc_KNN.append(metrics.accuracy_score(Y_Test, y_pred))
-       
-        
+    
     results =[]
     results.append(acc_DT)
     results.append(acc_Navie)
