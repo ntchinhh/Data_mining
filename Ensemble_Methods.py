@@ -1,16 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Sep  8 12:20:04 2021
-
-@author: Admin
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Sep  7 02:09:15 2021
-
-@author: Admin
-"""
 # Load libraries
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
@@ -127,7 +114,6 @@ def stratify_sampling(df):
     
     return 
 
-    
 def readData(df):
     r, c = df.shape
     size_sample = int(0.7*r)
@@ -205,7 +191,6 @@ def readData(df):
     print ("Độ Chính Xác Trung Bình Boosting: ", sum(acc_Boosting))
     return 
 
-    
 def main():
     df = pd.read_csv('C:\\Users\\Admin\\Desktop\\Data\\covtype.csv' ) 
     df.columns.values[0] = "class"   
