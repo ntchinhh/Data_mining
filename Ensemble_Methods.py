@@ -1,13 +1,12 @@
 # Load libraries
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
-from sklearn.model_selection import train_test_split # Import train_test_split function
-from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
+from sklearn.tree import DecisionTreeClassifier 
+from sklearn.model_selection import train_test_split
+from sklearn import metrics 
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from datetime import datetime
-
 import random
 import numpy as np
 import math
@@ -18,13 +17,9 @@ from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
 from sklearn import tree
 import graphviz 
-# instantiate labelencoder object
 from sklearn.tree import export_text
-
 from IPython.display import Image  
 from sklearn.tree import export_graphviz
-
-
 
     
 def stratify_sampling(df):
@@ -56,10 +51,6 @@ def stratify_sampling(df):
         
         print("Accuracy RandomForest:",metrics.accuracy_score(Test_y, pred_y))
         acc_RF.append(metrics.accuracy_score(Test_y, pred_y))
-
-       # print(metrics.confusion_matrix(Test_y,predictions))
-       # print(metrics.classification_report(Test_y,predictions))
-        #print(metrics.accuracy_score(Test_y, predictions))
     
 #Bagging    
         start = datetime.now()        
@@ -88,8 +79,6 @@ def stratify_sampling(df):
         acc_Boosting.append(acc)        
         print ("Boosting: ",acc)     
 
-    
-
     print ("Độ Chính Xác Random forest: ", sum(acc_RF))
     print ("Độ Chính Xác Trung Bình Bagging: ", sum(acc_Bagging))
     print ("Độ Chính Xác Trung Bình Boosting: ", sum(acc_Boosting))
@@ -97,14 +86,11 @@ def stratify_sampling(df):
     print ("Thời gian Random forest: ", np.mean(time_RF))
     print ("Thời gian Bagging : ", np.mean(time_Bagging))
     print ("Thời gian Boosting : ", np.mean(time_Boosting))
-    
-    
+   
     results =[]
     results.append(acc_RF)
     results.append(acc_Bagging)
     results.append(acc_Boosting)
-
-
 
     names =('Random forest','Bagging', 'Boosting')
     fig = plt.figure()
