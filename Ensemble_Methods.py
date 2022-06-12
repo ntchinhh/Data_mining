@@ -56,16 +56,6 @@ def stratify_sampling(df):
     
     for i in range (100):
         Train_x, Test_x, Train_y, Test_y = train_test_split(X,  y, stratify=y, test_size=0.4, random_state = random.randint(0,100000))
-# =============================================================================
-#         model = DecisionTreeClassifier()
-#         
-#         model.fit(Train_x, Train_y)        
-#         predictions = model.predict(Test_x)
-#         print("Accuracy Cay Quyet Dinh:",metrics.accuracy_score(Test_y, predictions))
-#         acc = metrics.accuracy_score(Test_y, predictions)
-#         acc_DT.append(acc)
-# =============================================================================
-
         
 #random forest
         start = datetime.now()
@@ -136,16 +126,9 @@ def stratify_sampling(df):
     plt.ylabel('Accuracy') 
     
     return 
-    
-   
- 
-    
-    
-    
-def readData(df):
-    
 
     
+def readData(df):
     r, c = df.shape
     size_sample = int(0.7*r)
     print (size_sample)    
@@ -158,10 +141,7 @@ def readData(df):
         print (i)
      
         chosen_idx = np.random.choice(r, replace = False,  size = size_sample) 
-        
         row_y = list(set(row_id) - set(chosen_idx))
-             
-       
     
         # train va test
         Train = df.iloc[chosen_idx]
@@ -170,12 +150,9 @@ def readData(df):
         Train_y = Train.loc[:,'class']
         #print (Train_x)
         
-    
-        
         Test_x = Test.iloc[:,Test.columns !='class']
         Test_y = Test.loc[:,'class']
-        
-        
+       
         rf_model = RandomForestClassifier(n_estimators=100,max_features= int(math.sqrt(c))+1)
     
         rf_model.fit(Train_x,Train_y)
@@ -186,9 +163,7 @@ def readData(df):
         print(metrics.confusion_matrix(Test_y,pred_y))
         print(metrics.classification_report(Test_y,pred_y))
         print(metrics.accuracy_score(Test_y, pred_y))
-        
-        
-        
+
         bagging_model = BaggingClassifier()()
         
         bagging_model.fit(Train_x, Train_y)
@@ -200,8 +175,6 @@ def readData(df):
         print(metrics.confusion_matrix(Test_y,predictions))
         print(metrics.classification_report(Test_y,predictions))
         #print(metrics.accuracy_score(Test_y, predictions))
-        
-        
         
         boosting_model = GradientBoostingClassifier()()
         
@@ -215,21 +188,14 @@ def readData(df):
         print(metrics.classification_report(Test_y,predictions))
         #print(metrics.accuracy_score(Test_y, predictions))
     
-       
-
-        
-    
     results =[]
     results.append(acc_RF)
     results.append(acc_Bagging)
     results.append(acc_Boosting)
   
-
-
     names =( 'Random forest', 'Bagging', 'Boosting')
     fig = plt.figure()
     fig.suptitle('Algorithm Comparison')
-
 
     plt.boxplot(results, labels=names)
     plt.ylabel('Accuracy') 
@@ -241,8 +207,6 @@ def readData(df):
 
     
 def main():
-  #  gin = gini_split(5, 9, gini(2, 3), gini(7, 2))
-    #Golf()   
     df = pd.read_csv('C:\\Users\\Admin\\Desktop\\Data\\covtype.csv' ) 
     df.columns.values[0] = "class"   
    # readData(df)    
