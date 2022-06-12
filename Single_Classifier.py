@@ -1,17 +1,14 @@
-
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
-from sklearn.model_selection import train_test_split # Import train_test_split function
-from sklearn.svm import SVC     ### SVM for classification
+from sklearn.tree import DecisionTreeClassifier 
+from sklearn.model_selection import train_test_split 
+from sklearn.svm import SVC     
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.linear_model import LogisticRegression
-
-from sklearn import metrics #Import scikit-learn metrics module for accuracy calculation
+from sklearn import metrics 
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.ensemble import BaggingClassifier
 from sklearn.ensemble import StackingClassifier
-
 import random
 import numpy as np
 import math
@@ -19,10 +16,7 @@ from collections import Counter
 import matplotlib.pyplot as plt
 from sklearn import tree
 import graphviz 
-# instantiate labelencoder object
 from sklearn.tree import export_text
-
-from IPython.display import Image  
 from sklearn.tree import export_graphviz
 from sklearn.naive_bayes import GaussianNB
 from sklearn.naive_bayes import MultinomialNB, BernoulliNB
@@ -108,52 +102,27 @@ def comparative(df):
     results.append(acc_Navie)
     results.append(acc_SVM)
     results.append(acc_KNN)
-    # results.append(acc_logistic)
     
     names =('Decision tree', 'Navie bayes', 'SVM', 'KNN')
     fig = plt.figure()
     fig.suptitle('Algorithm Comparison')
-    
-
     plt.boxplot(results, labels=names)
     plt.ylabel('Accuracy')    
-
-    #ax.set_xticklabels(names)
     plt.show()            
     
     print ("Results")
     print ("Accuracy")
     
-    print ("Accuracy Decision tree: ", np.mean(acc_DT))    ## gia tri trung binh  
-    
-    print ("Accuracy Naive Bayes: ", np.mean(acc_Navie))    ## gia tri trung binh  
-    
-    print ("Accuracy SVM: ", np.mean(acc_SVM))    ## gia tri trung binh 
-    
-    print ("Accuracy KNN: ", np.mean(acc_KNN))    ## gia tri trung binh  
-  
-    # print ("Accuracy Logistic: ", np.mean(acc_logistic))    ## gia tri trung binh 
-    
+    print ("Accuracy Decision tree: ", np.mean(acc_DT))    
+    print ("Accuracy Naive Bayes: ", np.mean(acc_Navie))    
+    print ("Accuracy SVM: ", np.mean(acc_SVM))    
+    print ("Accuracy KNN: ", np.mean(acc_KNN))    
        
     print ("Time")
-    
     print ("Time Decision tree: ", np.mean(time_DT))
     print ("Time Naive Bayes: ", np.mean(time_Naive))
     print ("Time SVM: ", np.mean(time_SVM))
     print ("Time KNN: ", np.mean(time_KNN))
-    # print ("Time Logistic_Rg: ", np.mean(time_logistic))
-
-
-def main():   
-    df = pd.read_csv('C:\\Users\\Admin\\Desktop\\Data\\CNS1.csv' ) 
-    df.columns.values[0] = "class"   
-   # readData(df)    
-    comparative(df)
-    return
-
-if __name__ == "__main__":
-    main()
-        
     
 def run_compare(df):
     r,c = df.shape
@@ -200,38 +169,26 @@ def run_compare(df):
     print ("Time Logistic_Rg: ", np.mean(time_logistic))
     print ("Logistic: MSE va RMSE: ", np.mean(logistic_MSE), ' : ',np.mean(logistic_RMSE))
 
-
-    names =('Logistic', 'Logistic','Logistic','Logistic') 
-
-    results =[]
+    names =('Logistic') 
     results.append(logistic_MSE)
     results.append(logistic_MSE)
     results.append(logistic_MSE)
     results.append(logistic_MSE)
   
-   
-    
     fig = plt.figure()
     fig.suptitle('Algorithm Comparison')
-  #  ax = fig.add_subplot(111)
-#    plt.boxplot(results)
     plt.boxplot(results, labels=names, showmeans=True)
-
-    #ax.set_xticklabels(names)
     plt.show()    
     
     return 
     
-
 def main():   
-    df = pd.read_csv('D:/DATA_MINING/Data/adenocarcinoma.csv' ) 
+    df = pd.read_csv('C:\\Users\\Admin\\Desktop\\Data\\CNS1.csv' ) 
     df.columns.values[0] = "class"   
    # readData(df)    
-    run_compare(df)
+    comparative(df)
+   # run_compare(df)
     return
 
 if __name__ == "__main__":
-    
     main()
-        
-
